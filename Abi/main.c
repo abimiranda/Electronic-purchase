@@ -1,13 +1,3 @@
-/**************************
- * File:   main.c                                                           *
- * Author: Esteban Lemos                                                    *
- * Created on 5 de febrero de 2014, 20:49                                   *
- * En caso de necesitar el proyecto completo ingresar en                    *
- * https://github.com/EEST1/Plantilla_6to                                   *
- **************************/
-
-
-// ========PLANTILLA TP======== //
 #include <xc.h>
 #include "confbits.h"       //no se debe de modificar este archivo para
 //garantizar el funcionamiento del BOOTLOADER
@@ -16,7 +6,7 @@
 
 #include "ConfShield2_1.h" //cambiar para el teclado // esta viene x defecto
 //el teclado utiliza los mismos pines que el entrenador pero la
-//incializaci´on esta disponible en el Shield1.3 no en el 2.1.
+//incializaciÂ´on esta disponible en el Shield1.3 no en el 2.1.
 #include "ConfShield1_3.h"
 #include "lcd.h"
 #include "teclado.h"
@@ -35,7 +25,7 @@ long int dolar_hoy=98;
 
 float cobre=10.40, aluminio=5.90, bronce=8.20, plomo=1.30; //precio USD de los metales (por Kgr))
 long int cobre_hoy, aluminio_hoy, bronce_hoy, plomo_hoy; // variable para guardar el precio de los metales es AR$ (por Kgr)
-long int casosMenu=0; // la mef funcionará en base al estado casosMenu. Declaración para la mef del menu
+long int casosMenu=0; // la mef funcionarÃ¡ en base al estado casosMenu. DeclaraciÃ³n para la mef del menu
 
 long int tiempo_ventana_peso=9, activador_tiempo_ventana_peso=0; //variables definida en segundos.
 long int tiempo_parpadeo_on=1, activador_on=0; //tiempo de encendido=1seg. activador es el flag
@@ -52,7 +42,7 @@ long int plomoPrecio(void);//proptotipo funcion para guardar el valor en ARS del
 
 void descomposicion(void);
 void parpadeoLed(void); //prototipo funcion para el parpadeo del led
-void ventanaPesaje(void); //funcion mef para para la ventana de pesaje. Parpadeo, peso, ¿¿registro de valores.??
+void ventanaPesaje(void); //funcion mef para para la ventana de pesaje. Parpadeo, peso, Â¿Â¿registro de valores.??
 void mefMenu (void); //maquina de estado para navegar por el menu para elegir los metales
 
 void main(void) {
@@ -79,27 +69,27 @@ void main(void) {
 
 void __interrupt myISR(void) {
     
-    //TIMMER 1 PARA SEGUNDOS acá van todas las interrupciones en segundos.
+    //TIMMER 1 PARA SEGUNDOS acÃ¡ van todas las interrupciones en segundos.
     if (TMR0IF == 1) { //termino termino de contar el timer?
         TMR0IF = 0; //bajamos el flag
-        TMR0L = 0xD2; //el timer contará 47 fosc/4 * 256 = 12032 * 0,0833us
+        TMR0L = 0xD2; //el timer contarÃ¡ 47 fosc/4 * 256 = 12032 * 0,0833us
         TMR0H = 0x48; //en total aprox 1.0022ms  casi 1ms
           //    des =~ des;        
 
       
-         if(activador_tiempo_ventana_peso==1){ //si el flag (activador) se activó, comienzo a decrementar el tiempo
+         if(activador_tiempo_ventana_peso==1){ //si el flag (activador) se activÃ³, comienzo a decrementar el tiempo
             if(tiempo_ventana_peso!=0){
                 tiempo_ventana_peso--;
             }
         }
         
-         if(activador_on == 1){                //si el flag (activador) se activó, comienzo a decrementar el tiempo
+         if(activador_on == 1){                //si el flag (activador) se activÃ³, comienzo a decrementar el tiempo
             if(tiempo_parpadeo_on != 0){
                 tiempo_parpadeo_on--;
             }
         }
         
-         if(activador_off==1){                 //si el flag (activador) se activó, comienzo a decrementar el tiempo
+         if(activador_off==1){                 //si el flag (activador) se activÃ³, comienzo a decrementar el tiempo
             if(tiempo_parpadeo_off !=0){
                 tiempo_parpadeo_off--;
             }
@@ -108,7 +98,7 @@ void __interrupt myISR(void) {
 
     if (TMR1IF == 1) { //TIMER 1 PARA ms // esto supuestamente cuenta en 1 milisegundo
         TMR1IF = 0; //bajamos el flag
-        TMR1L = 0x1B; //el timer contará 1200 fosc/4 * 1 = 12032 * 0,0833us
+        TMR1L = 0x1B; //el timer contarÃ¡ 1200 fosc/4 * 1 = 12032 * 0,0833us
         TMR1H = 0xD1; //en total aprox 99.96us  casi 100us
         tic_teclado();
         tic_LCD();
@@ -123,7 +113,7 @@ void __interrupt myISR(void) {
 
 }
 
-void mefMenu() {//declaro la función para la MEF corespondiente al menu. Eleccion de metal.
+void mefMenu() {//declaro la funciÃ³n para la MEF corespondiente al menu. Eleccion de metal.
     switch (casosMenu) { //switch respecto a casosMenu
         case 0://primer caso(elige COBRE)
         {   
@@ -258,7 +248,7 @@ void mefMenu() {//declaro la función para la MEF corespondiente al menu. Eleccio
         {
             parpadeoLed(); //una vez q termina el timpo total tmb le puefdo agregar q haga el ultimo punto(llamando a la funcion)
             
-            //para que lo està escrito en el lcd en la funcion parpadeo, no se mezcle con lo
+            //para que lo estÃ  escrito en el lcd en la funcion parpadeo, no se mezcle con lo
             //escrito debajo. Si funcionara bien lo correcto hubiera sido escrito asi:
             
                 //            if(tecla()==1){ //si ya me encuentro en este caso y decido pesar plomo, toco la tecla 1
@@ -361,29 +351,29 @@ long int plomoPrecio(){                 //funcion para guardar el valor del PLOM
 }
 
 long int readADC() { // en esta funcion guardo el valor deladc en kilos.
-    guarda_ADC = obtener_ADC10(); //acá llamo a la dfuncion y guardo el valor en una variable
+    guarda_ADC = obtener_ADC10(); //acÃ¡ llamo a la dfuncion y guardo el valor en una variable
     kilos = (guarda_ADC * 999.9) / 1023; // para esto hago la regla de 3simples.
     //5v son 999900gr, o sea, 999.9kilos.
-    //entonces si 999.9kg son 1023bits (pq ahora el conversor está en 10 bits tengo 1023 posiciones))
+    //entonces si 999.9kg son 1023bits (pq ahora el conversor estÃ¡ en 10 bits tengo 1023 posiciones))
     // (x*999.9kg)/1023= valor de bits 
     return kilos;
 }
 
 
-void parpadeoLed() {//declaro la función parpadeoLed
+void parpadeoLed() {//declaro la funciÃ³n parpadeoLed
     descomposicion();
-    if (tiempo_ventana_peso != 0) { // si el tiempo no llegó a 0
+    if (tiempo_ventana_peso != 0) { // si el tiempo no llegÃ³ a 0
         activador_tiempo_ventana_peso = 1; // activo el flag para que ahi comience el temporizador a decrementar
         switch (casos_parpadeo) { //switch respecto a casos parpadeo
             case 0://primer caso
             {
-                if (tiempo_parpadeo_on != 0) { // si el tiempo de encendido del LED1 no llegó a 0
+                if (tiempo_parpadeo_on != 0) { // si el tiempo de encendido del LED1 no llegÃ³ a 0
 
                     activador_on = 1; // activo el flag para qu recien ahi comience a contar el temporizador de ese led
                     LED1 = 1; // activo el led
                     
                 }
-                if (tiempo_parpadeo_on == 0) { // si llegó a 0
+                if (tiempo_parpadeo_on == 0) { // si llegÃ³ a 0
                     activador_on = 0; // pongo el flag en 0 para que deje de contar
                     clear_LCD(); // limpio pantalla lcd
                     casos_parpadeo = 1; // paso al siguiente caso
@@ -408,7 +398,7 @@ void parpadeoLed() {//declaro la función parpadeoLed
                     LED2=1; // enciendo el led
            
                 }
-                if(tiempo_parpadeo_off==0){ // si el tiempo llegó a 0
+                if(tiempo_parpadeo_off==0){ // si el tiempo llegÃ³ a 0
                     activador_off=0; //apago el flag
                     casos_parpadeo=3; //paso al sig caso
                     clear_LCD(); // limpio pantalla
@@ -418,7 +408,7 @@ void parpadeoLed() {//declaro la función parpadeoLed
 
             case 3:
             {
-                if (tiempo_parpadeo_off == 0) { // si el tiempo llegó a 0
+                if (tiempo_parpadeo_off == 0) { // si el tiempo llegÃ³ a 0
                     LED2 = 0; // apago el led
                     clear_LCD(); //limpio pantalla
                     tiempo_parpadeo_off = 3; //cargo para la proxiima vez
@@ -427,7 +417,7 @@ void parpadeoLed() {//declaro la función parpadeoLed
             }
         }
     }
-    if(tiempo_ventana_peso==0){ // si el contador principal de 5 seg llegó a 0
+    if(tiempo_ventana_peso==0){ // si el contador principal de 5 seg llegÃ³ a 0
         activador_tiempo_ventana_peso=0; //entonces apago el flag para que no entre a la maquina de estados
         LED1=0; //apago los leds
         LED2=0;
