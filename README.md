@@ -25,3 +25,5 @@ $15149,76 el valor mostrado en el display será:
 C$1530,25    009,9K
 
 $15150.- 
+
+Nota: El codigo se encuentra en el archivo main.c
