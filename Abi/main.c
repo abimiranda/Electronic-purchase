@@ -69,7 +69,7 @@ void main(void) {
 
 void __interrupt myISR(void) {
     
-    //TIMMER 1 PARA SEGUNDOS acá van todas las interrupciones en segundos.
+    //TIMMER 0 PARA SEGUNDOS acá van todas las interrupciones en segundos.
     if (TMR0IF == 1) { //termino termino de contar el timer?
         TMR0IF = 0; //bajamos el flag
         TMR0L = 0xD2; //el timer contará 47 fosc/4 * 256 = 12032 * 0,0833us
@@ -96,7 +96,7 @@ void __interrupt myISR(void) {
         }
     }
 
-    if (TMR1IF == 1) { //TIMER 1 PARA ms // esto supuestamente cuenta en 1 milisegundo
+    if (TMR1IF == 1) { //TIMER 1 PARA ms 
         TMR1IF = 0; //bajamos el flag
         TMR1L = 0x1B; //el timer contará 1200 fosc/4 * 1 = 12032 * 0,0833us
         TMR1H = 0xD1; //en total aprox 99.96us  casi 100us
@@ -151,11 +151,10 @@ void mefMenu() {//declaro la función para la MEF corespondiente al menu. Elecci
             } 
             
             
-            //las siguientes lineas de codigo no funcionan, aunque son las mismas que la de la tecla2!!
-//            if (tecla() == 3) {
-//                casosMenu = 3;
-//                clear_LCD();
-//            }
+            if (tecla() == 3) {
+                casosMenu = 3;
+                clear_LCD();
+           }
         }
             break;
 
@@ -193,10 +192,10 @@ void mefMenu() {//declaro la función para la MEF corespondiente al menu. Elecci
                 clear_LCD();
                 casosMenu = 2; //paso al sguiente caso
             }
-            //            if (tecla() == 3) {
-            //                clear_LCD();
-            //                casosMenu = 2; //vuelvo al caso 2
-            //            }
+                       if (tecla() == 3) {
+                           clear_LCD();
+                            casosMenu = 2; //vuelvo al caso 2
+                        }
            
         }
             break;
@@ -235,10 +234,10 @@ void mefMenu() {//declaro la función para la MEF corespondiente al menu. Elecci
                 clear_LCD();
                 casosMenu = 3; //paso al sguiente caso
             }
-//            if (tecla() == 3) {
-//                clear_LCD();
-//                casosMenu = 2; //vuelvo al caso 2
-//            }
+          if (tecla() == 3) {
+                clear_LCD();
+               casosMenu = 2; //vuelvo al caso 2
+            }
 
             
         }
