@@ -247,13 +247,11 @@ void mefMenu() {//declaro la función para la MEF corespondiente al menu. Elecci
         case 3:
         {
             parpadeoLed(); //una vez q termina el timpo total tmb le puefdo agregar q haga el ultimo punto(llamando a la funcion)
+
             
-            //para que lo està escrito en el lcd en la funcion parpadeo, no se mezcle con lo
-            //escrito debajo. Si funcionara bien lo correcto hubiera sido escrito asi:
-            
-                //            if(tecla()==1){ //si ya me encuentro en este caso y decido pesar plomo, toco la tecla 1
-                //                parpadeoLed(); // y hago el parpadeo
-                //            }
+                if(tecla()==1){ //si ya me encuentro en este caso y decido pesar plomo, toco la tecla 1
+                                parpadeoLed(); // y hago el parpadeo
+                            }
             
 //            set_CURSOR(0x00);
 //            msg2LCD("B $");
@@ -291,7 +289,7 @@ void mefMenu() {//declaro la función para la MEF corespondiente al menu. Elecci
 //                clear_LCD();
 //                casosMenu = 2; //vuelvo al caso 2
 //            }
-          //  ventanaPesaje();
+            ventanaPesaje();
             
         }
         break;
