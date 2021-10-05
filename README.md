@@ -1,4 +1,4 @@
-# electronic-purchase
+# Electronic Purchase
 # Code by Abigail Miranda
 # PIC 18F4550, teclado matricial, conversor AD, leds y display LCD.
 
