@@ -1,3 +1,8 @@
+/**************************
+ * File:   main.c                                                           *
+ * Author: Abigail Miranda                                                    *
+ **************************/
+
 #include <xc.h>
 #include "confbits.h"       //no se debe de modificar este archivo para
 //garantizar el funcionamiento del BOOTLOADER
